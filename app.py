@@ -55,7 +55,6 @@ def search_song_by_title(title):
         songs = []
         for hit in hits:
             song_info = hit["result"]
-            # 제목에 정확히 일치하는 결과만 추가
             if title.lower() in song_info["title"].lower():
                 songs.append({
                     "title": song_info["title"],
@@ -103,7 +102,7 @@ def get_songs_by_artist_id(artist_id):
     }
     search_url = f"{GENIUS_API_BASE_URL}/artists/{artist_id}/songs"
     params = {
-        "per_page": 10,  # 한 번에 10곡씩 가져옴
+        "per_page": 10,
         "page": 1
     }
     try:
@@ -157,8 +156,12 @@ class GeniusApp(tk.Tk):
         self.song_lyrics_clear_button = ttk.Button(self.song_lyrics_tab, text="초기화", command=self.clear_lyrics_results)
         self.song_lyrics_clear_button.grid(row=2, column=1, pady=10)
 
-        self.song_lyrics_result = tk.Text(self.song_lyrics_tab, wrap="word", height=15, width=70)
-        self.song_lyrics_result.grid(row=3, column=0, columnspan=2, pady=10)
+        self.song_lyrics_result = tk.Text(self.song_lyrics_tab, wrap="word", height=15)
+        self.song_lyrics_result.grid(row=3, column=0, columnspan=2, pady=10, sticky="nsew")
+
+        self.song_lyrics_tab.rowconfigure(3, weight=1)
+        self.song_lyrics_tab.columnconfigure(0, weight=1)
+        self.song_lyrics_tab.columnconfigure(1, weight=1)
 
         # 노래 제목 검색 탭
         self.song_title_label = ttk.Label(self.song_title_tab, text="노래 제목을 입력하세요")
@@ -173,8 +176,12 @@ class GeniusApp(tk.Tk):
         self.song_title_clear_button = ttk.Button(self.song_title_tab, text="초기화", command=self.clear_title_results)
         self.song_title_clear_button.grid(row=2, column=1, pady=10)
 
-        self.song_title_result = tk.Text(self.song_title_tab, wrap="word", height=15, width=70)
-        self.song_title_result.grid(row=3, column=0, columnspan=2, pady=10)
+        self.song_title_result = tk.Text(self.song_title_tab, wrap="word", height=15)
+        self.song_title_result.grid(row=3, column=0, columnspan=2, pady=10, sticky="nsew")
+
+        self.song_title_tab.rowconfigure(3, weight=1)
+        self.song_title_tab.columnconfigure(0, weight=1)
+        self.song_title_tab.columnconfigure(1, weight=1)
 
         # 아티스트 검색 탭
         self.artist_label = ttk.Label(self.artist_tab, text="아티스트 이름을 입력하세요")
@@ -189,8 +196,12 @@ class GeniusApp(tk.Tk):
         self.artist_clear_button = ttk.Button(self.artist_tab, text="초기화", command=self.clear_artist_results)
         self.artist_clear_button.grid(row=2, column=1, pady=10)
 
-        self.artist_result = tk.Text(self.artist_tab, wrap="word", height=15, width=70)
-        self.artist_result.grid(row=3, column=0, columnspan=2, pady=10)
+        self.artist_result = tk.Text(self.artist_tab, wrap="word", height=15)
+        self.artist_result.grid(row=3, column=0, columnspan=2, pady=10, sticky="nsew")
+
+        self.artist_tab.rowconfigure(3, weight=1)
+        self.artist_tab.columnconfigure(0, weight=1)
+        self.artist_tab.columnconfigure(1, weight=1)
 
     def search_songs_by_lyrics(self):
         query = self.song_lyrics_entry.get().strip()
@@ -243,12 +254,15 @@ class GeniusApp(tk.Tk):
             self.artist_result.insert(tk.END, "아티스트를 찾지 못했습니다.")
 
     def clear_lyrics_results(self):
+        self.song_lyrics_entry.delete(0, tk.END)
         self.song_lyrics_result.delete(1.0, tk.END)
 
     def clear_title_results(self):
+        self.song_title_entry.delete(0, tk.END)
         self.song_title_result.delete(1.0, tk.END)
 
     def clear_artist_results(self):
+        self.artist_entry.delete(0, tk.END)
         self.artist_result.delete(1.0, tk.END)
 
 if __name__ == "__main__":
