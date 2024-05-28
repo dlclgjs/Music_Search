@@ -19,3 +19,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+### Genius API License
+이 프로젝트는 Genius API를 사용합니다. Genius API를 사용할 때는 반드시 [Genius API 서비스 약관](https://genius.com/developers/terms)을 준수해야 합니다. 특히 다음 사항을 유의해야 합니다.
+- 개인 및 비상업적 용도로만 사용 가능.
+- API 호출 제한을 준수.
+- 데이터를 Genius 이외의 다른 서비스에 제공하거나 재배포하지 않음.
+
