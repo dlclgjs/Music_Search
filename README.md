@@ -1,5 +1,4 @@
 # Welcome to the Music Search Wiki!
-====
 
 ## Music Search
 찾고자 하는 음악의 정보를 입력하면 원하는 값을 받을 수 있습니다.
